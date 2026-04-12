@@ -19,15 +19,22 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Logo + about */}
           <div className="space-y-4">
-            <img src={logo} alt="518 Dental" className="h-12 w-auto brightness-0 invert" />
+            <img
+              src={logo}
+              alt="518 Dental"
+              className="h-12 w-auto brightness-0 invert"
+            />
             <p className="text-sm text-primary-foreground/70 leading-relaxed">
-              Family dental care delivered with a smile. Providing NHS and private treatments in Rochdale.
+              Family dental care delivered with a smile. Providing NHS and
+              private treatments in Rochdale.
             </p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h3 className="font-serif text-lg font-semibold mb-4 text-secondary">Quick Links</h3>
+            <h3 className="font-serif text-lg font-semibold mb-4 text-secondary">
+              Quick Links
+            </h3>
             <nav className="flex flex-col gap-2">
               {[
                 { label: "Home", to: "/" },
@@ -49,13 +56,21 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-serif text-lg font-semibold mb-4 text-secondary">Contact</h3>
+            <h3 className="font-serif text-lg font-semibold mb-4 text-secondary">
+              Contact
+            </h3>
             <div className="space-y-3 text-sm text-primary-foreground/70">
-              <a href="tel:01706527127" className="flex items-center gap-2 hover:text-secondary transition-colors">
+              <a
+                href="tel:01706527127"
+                className="flex items-center gap-2 hover:text-secondary transition-colors"
+              >
                 <Phone className="h-4 w-4 text-secondary" />
                 01706 527127
               </a>
-              <a href="mailto:admin@518dental.co.uk" className="flex items-center gap-2 hover:text-secondary transition-colors">
+              <a
+                href="mailto:admin@518dental.co.uk"
+                className="flex items-center gap-2 hover:text-secondary transition-colors"
+              >
                 <Mail className="h-4 w-4 text-secondary" />
                 admin@518dental.co.uk
               </a>
@@ -68,7 +83,9 @@ export default function Footer() {
 
           {/* Opening hours */}
           <div>
-            <h3 className="font-serif text-lg font-semibold mb-4 text-secondary">Opening Hours</h3>
+            <h3 className="font-serif text-lg font-semibold mb-4 text-secondary">
+              Opening Hours
+            </h3>
             <div className="space-y-1.5 text-sm text-primary-foreground/70">
               {hours.map((h) => (
                 <div key={h.day} className="flex justify-between">
@@ -82,6 +99,12 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-primary-foreground/10 pt-8 text-center text-sm text-primary-foreground/50">
           <p>© {new Date().getFullYear()} 518 Dental. All rights reserved.</p>
+          <p className="mt-2">
+            Powered by{" "}
+            <span className="font-medium text-primary-foreground/70">
+              LitWebs
+            </span>
+          </p>
         </div>
       </div>
     </footer>

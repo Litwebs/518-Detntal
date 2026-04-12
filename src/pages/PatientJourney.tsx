@@ -1,11 +1,27 @@
 import Layout from "@/components/Layout";
+import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Phone, ClipboardList, MessageSquare, Stethoscope, ThumbsUp } from "lucide-react";
+import {
+  Phone,
+  ClipboardList,
+  MessageSquare,
+  Stethoscope,
+  ThumbsUp,
+} from "lucide-react";
 
-function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function AnimatedSection({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const { ref, isVisible } = useScrollAnimation();
   return (
-    <div ref={ref} className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}>
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
+    >
       {children}
     </div>
   );
@@ -15,7 +31,26 @@ const steps = [
   {
     icon: Phone,
     title: "Initial Contact",
-    desc: "Contact us by phone on 01706 527127 or via our online enquiry form to arrange your first appointment. Our friendly team will find a convenient time for you.",
+    desc: (
+      <>
+        Contact us by phone on{" "}
+        <a
+          href="tel:01706527127"
+          className="inline-flex rounded-full bg-secondary px-3 py-1 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-secondary/90"
+        >
+          01706 527127
+        </a>{" "}
+        or via our{" "}
+        <Link
+          to="/contact"
+          className="inline-flex rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1 text-sm font-semibold text-secondary transition-colors hover:bg-secondary/20"
+        >
+          online enquiry
+        </Link>{" "}
+        form to arrange your first appointment. Our friendly team will find a
+        convenient time for you.
+      </>
+    ),
   },
   {
     icon: ClipboardList,
@@ -44,7 +79,9 @@ export default function PatientJourney() {
     <Layout>
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Your Patient Journey</h1>
+          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">
+            Your Patient Journey
+          </h1>
           <div className="mx-auto h-1 w-16 rounded-full bg-secondary mb-6" />
           <p className="max-w-2xl mx-auto text-primary-foreground/70 text-lg">
             What to expect when you visit 518 Dental.
@@ -69,7 +106,9 @@ export default function PatientJourney() {
                         <step.icon className="h-5 w-5 text-secondary" />
                         {step.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {step.desc}
+                      </p>
                     </div>
                   </div>
                 </AnimatedSection>
