@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
-const logo = "/518.jpg";
+const logo = `${import.meta.env.BASE_URL}518.jpg`;
 
 const hours = [
   { day: "Monday", time: "9:00am – 5:30pm" },
