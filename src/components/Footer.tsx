@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import logo from "@/assets/logo-518.png";
+
+const logo = "/518.jpg";
 
 const hours = [
   { day: "Monday", time: "9:00am – 5:30pm" },
@@ -22,7 +23,7 @@ export default function Footer() {
             <img
               src={logo}
               alt="518 Dental"
-              className="h-12 w-auto brightness-0 invert"
+              className="h-12 w-auto rounded-md bg-white p-1"
             />
             <p className="text-sm text-primary-foreground/70 leading-relaxed">
               Family dental care delivered with a smile. Providing NHS and
