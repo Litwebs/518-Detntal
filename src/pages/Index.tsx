@@ -28,10 +28,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import heroImg from "@/assets/img1.JPG?url";
-import doctor1 from "@/assets/doctor-2.png";
-import doctor2 from "@/assets/doctor-1.png";
-import doctor3 from "@/assets/doctor-3.png";
-import doctor4 from "@/assets/doctor-4.png";
+import { team } from "@/data/team";
 
 function AnimatedSection({
   children,
@@ -109,36 +106,7 @@ const hours = [
   { day: "Sunday", time: "Closed" },
 ];
 
-const teamPreview = [
-  {
-    name: "Dr Lawiza Kiani",
-    role: "Lead Dentist",
-    gdc: "100922",
-    image: doctor1,
-    bio: "Lawiza graduated from the University of Manchester in 2005 and has a keen interest in paediatric dentistry and caring for anxious patients.",
-  },
-  {
-    name: "Dr Sajid Malik",
-    role: "Lead Dentist",
-    gdc: "176706",
-    image: doctor2,
-    bio: "Sajid graduated from the University of Liverpool in 2009 and has a strong interest in restorative and cosmetic dentistry.",
-  },
-  {
-    name: "Dr Hassan Adnan",
-    role: "Dentist",
-    gdc: "277472",
-    image: doctor3,
-    bio: "Hassan qualified from the University of Plymouth in 2018 and brings oral and maxillofacial surgery experience back into general practice.",
-  },
-  {
-    name: "Dr Annum Sabir",
-    role: "Dentist",
-    gdc: "258862",
-    image: doctor4,
-    bio: "Annum graduated from the University of Manchester in 2015 and has a keen interest in Endodontics and Invisalign treatment.",
-  },
-];
+const teamPreview = team.slice(0, 4);
 
 export default function Index() {
   const { toast } = useToast();
@@ -348,13 +316,11 @@ export default function Index() {
             />
             <div className="mx-auto mb-10 max-w-4xl rounded-3xl border border-secondary/20 bg-card p-8 text-center shadow-sm md:p-10">
               <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-                518 Dental is headed by husband and wife lead dentists, Lawiza
-                and Sajid. We have an extremely dedicated and welcoming team,
-                whose priority is to ensure that your visit is as enjoyable and
-                comfortable as possible. Coming to the dentist is a daunting
-                experience for most people and we pride ourselves in providing a
-                caring and relaxed environment for the patient and their
-                families.
+                Dr Lawiza Kiani and Dr Sajid Malik are the proud owners and
+                principal dentists at 518 Dental. Together, they have built a
+                team that shares their values of professionalism, kindness and
+                excellence, providing modern dental care in a welcoming,
+                patient-focused environment.
               </p>
             </div>
             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4 max-w-6xl mx-auto">
@@ -364,12 +330,14 @@ export default function Index() {
                   className="overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <CardContent className="p-8">
-                    <div className="mb-5 mx-auto h-28 w-28 overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="h-full w-full object-cover object-top"
-                      />
+                    <div className="mb-5 mx-auto flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
+                      {member.image ? (
+                        <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top" />
+                      ) : (
+                        <span className="font-serif text-3xl text-secondary" aria-hidden="true">
+                          {member.name.replace("Dr ", "").split(" ").map((name) => name[0]).join("")}
+                        </span>
+                      )}
                     </div>
                     <h3 className="font-serif text-xl font-semibold text-center mb-1">
                       {member.name}
@@ -378,10 +346,10 @@ export default function Index() {
                       {member.role}
                     </p>
                     <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground text-center">
-                      GDC No {member.gdc}
+                      {member.gdc ? `GDC No ${member.gdc}` : "Dental Surgeon"}
                     </p>
                     <p className="text-sm text-muted-foreground text-center">
-                      {member.bio}
+                      {member.short}
                     </p>
                   </CardContent>
                 </Card>

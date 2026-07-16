@@ -11,10 +11,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import doctor1 from "@/assets/doctor-2.png";
-import doctor2 from "@/assets/doctor-1.png";
-import doctor3 from "@/assets/doctor-3.png";
-import doctor4 from "@/assets/doctor-4.png";
+import { team, type TeamMember } from "@/data/team";
 
 function AnimatedSection({
   children,
@@ -34,47 +31,8 @@ function AnimatedSection({
   );
 }
 
-const team = [
-  {
-    name: "Dr Lawiza Kiani",
-    role: "Lead Dentist",
-    gdc: "100922",
-    image: doctor1,
-    short:
-      "Lawiza graduated from the University of Manchester in 2005 and has a keen interest in paediatric dentistry and caring for anxious patients.",
-    full: "Lawiza graduated from the University of Manchester in 2005. Lawiza has a broad base of experience having spent many years in general practice and has a very keen interest in paediatric dentistry and the treatment of anxious patients. Lawiza makes it a priority to stay up to date with continuing education to ensure that her patients receive the best possible dental care. Lawiza's spare time is mostly spent chauffeuring her 2 young children to their various activities!",
-  },
-  {
-    name: "Dr Sajid Malik",
-    role: "Lead Dentist",
-    gdc: "176706",
-    image: doctor2,
-    short:
-      "Sajid graduated from the University of Liverpool in 2009 and has a strong interest in restorative and cosmetic dentistry.",
-    full: "Sajid graduated from the University of Liverpool in 2009. In addition to his dental degree, Sajid also holds a BSc (Hons) in Biomedical Science and an MSc in Medical Health Promotion. Sajid makes it a priority to stay up to date with continuing education to ensure that his patients receive the best possible dental care. Sajid has a very keen interest in restorative and cosmetic dentistry and has recently completed further training in the latest composite bonding techniques from the Dental Excellence training academy in Liverpool. Sajid devotes most of his spare time to his beloved Liverpool football club.",
-  },
-  {
-    name: "Dr Hassan Adnan",
-    role: "Dentist",
-    gdc: "277472",
-    image: doctor3,
-    short:
-      "Hassan qualified from the University of Plymouth in 2018 and brings oral and maxillofacial surgery experience back into general practice.",
-    full: "Hassan qualified from the University of Plymouth in 2018. After a year working as an SHO in Oral and Maxillofacial surgery treating complex head and neck cases, he returned to general practice. Hassan utilises his approachable sympathetic nature to create a comfortable environment within the surgery and in return delivers high quality dental care. Outside of work, Hassan enjoys spending time with his family and is a keen sportsman - enjoying playing and watching football and cricket!",
-  },
-  {
-    name: "Dr Annum Sabir",
-    role: "Dentist",
-    gdc: "258862",
-    image: doctor4,
-    short:
-      "Annum graduated from the University of Manchester in 2015 and has a keen interest in Endodontics and Invisalign treatment.",
-    full: "Annum graduated from the University of Manchester in 2015. She has completed a Diploma at the prestigious Faculty of Dental Surgery and has a keen interest in Endodontics. Most recently, she completed the Advanced Endodontic Course at the University of Manchester, ensuring that her patients receive the highest possible standard of care. Annum also provides Invisalign for the cosmetic alignment of her patient's teeth. Outside of work, Annum enjoys running, painting and hiking.",
-  },
-];
-
 export default function MeetTheTeam() {
-  const [selected, setSelected] = useState<(typeof team)[0] | null>(null);
+  const [selected, setSelected] = useState<TeamMember | null>(null);
 
   return (
     <Layout>
@@ -95,13 +53,12 @@ export default function MeetTheTeam() {
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="rounded-3xl border border-secondary/20 bg-warm-white p-8 text-center shadow-sm md:p-10">
               <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-                518 Dental is headed by husband and wife lead dentists, Lawiza
-                and Sajid. We have an extremely dedicated and welcoming team,
-                whose priority is to ensure that your visit is as enjoyable and
-                comfortable as possible. Coming to the dentist is a daunting
-                experience for most people and we pride ourselves in providing a
-                caring and relaxed environment for the patient and their
-                families.
+                Dr Lawiza Kiani and Dr Sajid Malik are the proud owners and
+                principal dentists at 518 Dental. Together, they have built a
+                team that shares their values of professionalism, kindness and
+                excellence. Their vision is a modern, patient-focused practice
+                where people of all ages feel valued, listened to and confident
+                in their treatment.
               </p>
             </div>
           </div>
@@ -119,19 +76,21 @@ export default function MeetTheTeam() {
                   onClick={() => setSelected(member)}
                 >
                   <CardContent className="p-8 text-center">
-                    <div className="mb-6 mx-auto h-36 w-36 overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="h-full w-full object-cover object-top"
-                      />
+                    <div className="mb-6 mx-auto flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
+                      {member.image ? (
+                        <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top" />
+                      ) : (
+                        <span className="font-serif text-4xl text-secondary" aria-hidden="true">
+                          {member.name.replace("Dr ", "").split(" ").map((name) => name[0]).join("")}
+                        </span>
+                      )}
                     </div>
                     <h3 className="font-serif text-2xl font-semibold mb-1">
                       {member.name}
                     </h3>
                     <p className="text-sm text-secondary">{member.role}</p>
                     <p className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                      GDC No {member.gdc}
+                      {member.gdc ? `GDC No ${member.gdc}` : "Dental Surgeon"}
                     </p>
                     <p className="text-sm text-muted-foreground mb-6">
                       {member.short}
@@ -139,7 +98,7 @@ export default function MeetTheTeam() {
                     <div className="flex flex-col gap-2">
                       <Button
                         variant="outline"
-                        className="border-secondary text-secondary hover:bg-secondary/10 rounded-lg"
+                        className="rounded-lg border-secondary text-secondary hover:bg-secondary/10 hover:!text-primary"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelected(member);
@@ -164,19 +123,21 @@ export default function MeetTheTeam() {
 
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
         <DialogContent className="max-w-lg">
-          <div className="mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
-            <img
-              src={selected?.image}
-              alt={selected?.name}
-              className="h-full w-full object-cover object-top"
-            />
+          <div className="mx-auto flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
+            {selected?.image ? (
+              <img src={selected.image} alt={selected.name} className="h-full w-full object-cover object-top" />
+            ) : (
+              <span className="font-serif text-5xl text-secondary" aria-hidden="true">
+                {selected?.name.replace("Dr ", "").split(" ").map((name) => name[0]).join("")}
+              </span>
+            )}
           </div>
           <DialogHeader>
             <DialogTitle className="font-serif text-2xl">
               {selected?.name}
             </DialogTitle>
             <DialogDescription className="text-secondary">
-              {selected?.role} • GDC No {selected?.gdc}
+              {selected?.role}{selected?.gdc ? ` • GDC No ${selected.gdc}` : ""}
             </DialogDescription>
           </DialogHeader>
           <p className="text-sm text-muted-foreground leading-relaxed">

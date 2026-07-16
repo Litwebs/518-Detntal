@@ -118,8 +118,8 @@ export default function About() {
               <p>
                 518 Dental is a well-established dental practice situated at
                 518A Bury Road, Rochdale. We are a husband and wife led
-                practice, run by Dr Lawiza and Dr Sajid, both graduates of the
-                University of Manchester.
+                practice, run by principal dentists Dr Lawiza Kiani and Dr
+                Sajid Malik.
               </p>
               <p>
                 We are passionate about providing high quality dental care in a
