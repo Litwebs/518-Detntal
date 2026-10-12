@@ -90,9 +90,9 @@ const feeCategories: FeeCategory[] = [
   {
     title: "NHS Bands (England)",
     items: [
-      { name: "Band 1 – Examination, diagnosis, prevention", price: "£26.80" },
-      { name: "Band 2 – Fillings, extractions, root canal", price: "£73.50" },
-      { name: "Band 3 – Crowns, dentures, bridges", price: "£319.10" },
+      { name: "Band 1 – Routine exams, X-rays, preventative advice, and clinical scale and polish.", price: "£27.90" },
+      { name: "Band 2 – All Band 1 care plus fillings, extractions, and root canals.", price: "£76.60" },
+      { name: "Band 3 – All Band 1 and 2 care plus complex lab work like crowns, dentures, and bridges.", price: "£332.10" },
     ],
   },
 ];

@@ -122,7 +122,7 @@ export default function MeetTheTeam() {
       </AnimatedSection>
 
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
-        <DialogContent className="max-w-lg">
+        <DialogContent className="max-w-lg max-h-[90dvh] overflow-y-auto">
           <div className="mx-auto flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
             {selected?.image ? (
               <img src={selected.image} alt={selected.name} className="h-full w-full object-cover object-top" />
@@ -140,9 +140,11 @@ export default function MeetTheTeam() {
               {selected?.role}{selected?.gdc ? ` • GDC No ${selected.gdc}` : ""}
             </DialogDescription>
           </DialogHeader>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {selected?.full}
-          </p>
+          <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+            {selected?.full.split("\n\n").map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
           <Button
             asChild
             className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg mt-2"
