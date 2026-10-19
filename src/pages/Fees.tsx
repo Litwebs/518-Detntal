@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -70,7 +71,11 @@ export default function Fees() {
                     {cat.items.map((item, i) => (
                       <div key={i} className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center sm:gap-4 px-6 py-3 hover:bg-muted/50 transition-colors">
                         <span className="text-sm">{item.name}</span>
-                        <span className="text-sm font-semibold text-secondary shrink-0 sm:text-right">{item.price}</span>
+                        <span className="text-sm font-semibold text-secondary shrink-0 sm:text-right">{item.price === "Subject to consultation" ? (
+                          <Link to="/contact" className="underline underline-offset-2 hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" aria-label={`Contact us about ${item.name} pricing`}>
+                            {item.price}
+                          </Link>
+                        ) : item.price}</span>
                       </div>
                     ))}
                   </div>
@@ -81,6 +86,12 @@ export default function Fees() {
 
           <p className="text-sm text-muted-foreground text-center mt-8">
             All fees are approximate and may vary depending on individual treatment needs. Please contact us for a personalised quote.
+          </p>
+          <p className="text-center text-foreground">
+            Have a question about our fees or need a personalised quote? Contact us —{" "}
+            <Link to="/contact" className="font-semibold text-secondary underline underline-offset-4 hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">
+              click here
+            </Link>.
           </p>
         </div>
       </section>
