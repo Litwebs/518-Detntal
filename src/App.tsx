@@ -1,40 +1,51 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import Index from "./pages/Index.tsx";
+import About from "./pages/About.tsx";
+import MeetTheTeam from "./pages/MeetTheTeam.tsx";
+import PatientJourney from "./pages/PatientJourney.tsx";
+import Treatments from "./pages/Treatments.tsx";
+import Fees from "./pages/Fees.tsx";
+import DentalReferral from "./pages/DentalReferral.tsx";
+import Contact from "./pages/Contact.tsx";
+import NotFound from "./pages/NotFound.tsx";
+
+const queryClient = new QueryClient();
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 const App = () => (
-  <main className="flex min-h-screen items-center justify-center bg-background px-6 py-16">
-    <section aria-labelledby="maintenance-heading" className="w-full max-w-xl text-center">
-      <img
-        src={`${import.meta.env.BASE_URL}518.jpg`}
-        alt="518 Dental"
-        className="mx-auto mb-10 h-24 w-auto max-w-full object-contain"
-      />
-      <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-        We'll be back soon
-      </p>
-      <h1 id="maintenance-heading" className="text-4xl font-semibold leading-tight sm:text-5xl">
-        Our website is currently under maintenance
-      </h1>
-      <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-        We're making some updates to our website. Thank you for your patience.
-        Please contact our team for appointments or enquiries.
-      </p>
-      <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a
-          href="tel:01706527127"
-          className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-        >
-          Call 01706 527127
-        </a>
-        <a
-          href="mailto:admin@518dental.co.uk"
-          className="break-all rounded-lg border border-border px-6 py-3 font-medium underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-        >
-          admin@518dental.co.uk
-        </a>
-      </div>
-      <p className="mt-10 text-sm text-muted-foreground">
-        518A Bury Road, Rochdale, OL11 4DQ
-      </p>
-    </section>
-  </main>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/meet-the-team" element={<MeetTheTeam />} />
+          <Route path="/patient-journey" element={<PatientJourney />} />
+          <Route path="/treatments" element={<Treatments />} />
+          <Route path="/fees" element={<Fees />} />
+          <Route path="/dental-referral" element={<DentalReferral />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 export default App;
