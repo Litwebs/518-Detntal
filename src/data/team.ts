@@ -1,8 +1,8 @@
-import lawizaImage from "@/assets/doctor-2.png";
+import lawizaImage from "@/assets/team/lawiza-kiani-centered.jpg";
 import sajidImage from "@/assets/doctor-1.png";
-import hassanImage from "@/assets/team/hassan-adnan.jpg";
+import hassanImage from "@/assets/team/hassan-adnan-centered.jpg";
 import zaraImage from "@/assets/team/zara-ashraf.jpg";
-import shahzaibImage from "@/assets/team/shahzaib-siddiqui.jpg";
+import shahzaibImage from "@/assets/team/shahzaib-siddiqui-centered.jpg";
 import bilalImage from "@/assets/team/bilal-afzal.jpg";
 import talhaImage from "@/assets/team/talha-dawood.jpg";
 
