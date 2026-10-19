@@ -332,10 +332,10 @@ export default function Index() {
                   <CardContent className="p-8">
                     <div className="mb-5 mx-auto flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
                       {member.image ? (
-                        <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top" />
+                        <img src={member.image} alt={member.name} className="h-full w-full object-cover object-center" loading="lazy" decoding="async" />
                       ) : (
                         <span className="font-serif text-3xl text-secondary" aria-hidden="true">
-                          {member.name.replace("Dr ", "").split(" ").map((name) => name[0]).join("")}
+                          {member.name.replace(/^(Dr|Mr|Ms|Mrs)\s+/, "").split(" ").map((name) => name[0]).join("")}
                         </span>
                       )}
                     </div>

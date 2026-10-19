@@ -78,10 +78,10 @@ export default function MeetTheTeam() {
                   <CardContent className="p-8 text-center">
                     <div className="mb-6 mx-auto flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
                       {member.image ? (
-                        <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top" />
+                        <img src={member.image} alt={member.name} className="h-full w-full object-cover object-center" loading="lazy" decoding="async" />
                       ) : (
                         <span className="font-serif text-4xl text-secondary" aria-hidden="true">
-                          {member.name.replace("Dr ", "").split(" ").map((name) => name[0]).join("")}
+                          {member.name.replace(/^(Dr|Mr|Ms|Mrs)\s+/, "").split(" ").map((name) => name[0]).join("")}
                         </span>
                       )}
                     </div>
@@ -127,10 +127,10 @@ export default function MeetTheTeam() {
         <DialogContent className="max-w-lg max-h-[90dvh] overflow-y-auto">
           <div className="mx-auto flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-4 border-secondary/20 bg-secondary/10 shadow-sm">
             {selected?.image ? (
-              <img src={selected.image} alt={selected.name} className="h-full w-full object-cover object-top" />
+              <img src={selected.image} alt={selected.name} className="h-full w-full object-cover object-center" loading="lazy" decoding="async" />
             ) : (
               <span className="font-serif text-5xl text-secondary" aria-hidden="true">
-                {selected?.name.replace("Dr ", "").split(" ").map((name) => name[0]).join("")}
+                {selected?.name.replace(/^(Dr|Mr|Ms|Mrs)\s+/, "").split(" ").map((name) => name[0]).join("")}
               </span>
             )}
           </div>
