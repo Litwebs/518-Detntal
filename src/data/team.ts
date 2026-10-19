@@ -71,4 +71,11 @@ export const team: TeamMember[] = [
       "Faiza qualified from the University of Manchester in 2021 and is passionate about making every visit relaxed and positive.",
     full: "Dr Faiza Anjum qualified in 2021 from The University of Manchester.\n\nFaiza’s priority is ensuring every patient has a positive and relaxed experience from the moment they walk through the door. Faiza enjoys treating patients of all ages, with a particular interest in helping those who feel anxious about dental treatment to try and make every appointment as comfortable and stress-free as possible.\n\nWhen she’s not at work you'll usually find her caring for her houseplants, planning her next travel adventure or enjoying quality time with family.",
   },
+  {
+    name: "Mr Talha Dawood",
+    role: "Clinical Dental Technician",
+    short:
+      "Talha is a qualified Clinical Dental Technician who creates comfortable, natural-looking dentures tailored to each patient’s needs.",
+    full: "Talha is a fully qualified Clinical Dental Technician with a passion for creating comfortable, natural-looking dentures tailored to each patient’s needs.\n\nKnown for his friendly and reassuring approach, he takes the time to understand patients’ concerns and helps even the most nervous feel at ease.\n\nHolding a Bachelor’s degree in Clinical Dental Technology, Talha is one of fewer than 450 registered Clinical Dental Technicians in the UK. He has undertaken additional training in the BPS denture workflow and implant-retained dentures.\n\nWhat sets Talha apart is that he personally designs, manufactures and fits every denture he provides. By combining his clinical and technical expertise, he oversees the entire process, from initial consultation to final fitting, ensuring a personalised approach focused on fit, function, comfort and natural aesthetics.\n\nTalha is passionate about helping patients rediscover the confidence to eat, speak and smile comfortably.\n\nOutside of work, he enjoys football.",
+  },
 ];
