@@ -1,6 +1,6 @@
-import lawizaImage from "@/assets/team/lawiza-kiani-centered.jpg";
+import lawizaImage from "@/assets/team/lawiza-kiani-reference-aligned.jpg";
 import sajidImage from "@/assets/doctor-1.png";
-import hassanImage from "@/assets/team/hassan-adnan-centered.jpg";
+import hassanImage from "@/assets/team/hassan-adnan-reference-aligned.jpg";
 import zaraImage from "@/assets/team/zara-ashraf.jpg";
 import shahzaibImage from "@/assets/team/shahzaib-siddiqui-centered.jpg";
 import bilalImage from "@/assets/team/bilal-afzal.jpg";
@@ -22,7 +22,6 @@ export const team: TeamMember[] = [
     role: "Principal Dentist",
     gdc: "100922",
     image: lawizaImage,
-    portraitClass: "-translate-x-[3%] -translate-y-[2%]",
     short:
       "Lawiza qualified from the University of Manchester in 2005 and has a particular interest in caring for anxious patients.",
     full: "Lawiza qualified from the University of Manchester in 2005 and has consistently worked within the NHS, carrying out all aspects of general dentistry. She has a particular interest in the management of anxious patients. Lawiza currently divides her time between running the practice and her clinical work.",
@@ -50,7 +49,6 @@ export const team: TeamMember[] = [
     role: "Dentist",
     gdc: "277472",
     image: hassanImage,
-    portraitClass: "-translate-x-[8%] -translate-y-[2%]",
     short:
       "Hassan qualified from Plymouth University in 2018 and has a particular interest in cosmetic dentistry and smile makeovers.",
     full: "Dr Hassan qualified from Plymouth University Peninsula Dental School in 2018 and has since gained experience in both hospital and general dental practice. He completed a year as a Senior House Officer in Oral and Maxillofacial Surgery, developing valuable skills in managing complex dental and surgical cases.\n\nHe now provides a full range of NHS and private treatments in general practice and continues to expand his knowledge through postgraduate training.\n\nDr Hassan has a particular interest in cosmetic dentistry and smile makeovers, using facially driven smile design and digital technology to achieve natural, minimally invasive results.\n\nKnown for his calm and friendly manner, he is committed to making patients feel comfortable and at ease.\n\nHe is also further developing his skills in dental implantology with the BAIRD Academy.\n\nOutside of dentistry, Dr Hassan enjoys time with his family, staying active, and supporting Liverpool FC.",
