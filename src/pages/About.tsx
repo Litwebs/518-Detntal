@@ -12,10 +12,11 @@ import {
 } from "lucide-react";
 import aboutImage1 from "@/assets/About-1.JPG?url";
 import aboutImage2 from "@/assets/About-2.JPG?url";
-import aboutImage3 from "@/assets/About-3.JPG?url";
 import aboutImage4 from "@/assets/About-4.JPG?url";
-import aboutImage5 from "@/assets/About-5.JPG?url";
 import aboutImage6 from "@/assets/About-6.JPG?url";
+import receptionImage from "@/assets/about-gallery/reception.webp";
+import loungeImage from "@/assets/about-gallery/lounge.webp";
+import windowImage from "@/assets/about-gallery/window.webp";
 
 function AnimatedSection({
   children,
@@ -69,28 +70,12 @@ const values = [
 ];
 
 const aboutGallery = [
-  {
-    src: aboutImage1,
-    alt: "518 Dental reception seating area",
-    className: "lg:col-span-2",
-  },
-  {
-    src: aboutImage2,
-    alt: "518 Dental treatment room interior",
-    className: "",
-  },
-  {
-    src: aboutImage3,
-    alt: "518 Dental welcoming practice space",
-    className: "",
-  },
-  { src: aboutImage4, alt: "518 Dental modern clinic details", className: "" },
-  { src: aboutImage5, alt: "518 Dental patient area and décor", className: "" },
-  {
-    src: aboutImage6,
-    alt: "518 Dental interior practice view",
-    className: "lg:col-span-2",
-  },
+  { src: loungeImage, alt: "518 Dental upstairs lounge with modern lighting and television", title: "A calming space" },
+  { src: aboutImage1, alt: "Dental surgery with modern treatment equipment at 518 Dental", title: "Modern surgeries" },
+  { src: windowImage, alt: "Bright waiting area by the front windows at 518 Dental", title: "Light-filled waiting area" },
+  { src: aboutImage2, alt: "Comfortable dental treatment chair beside a window", title: "Patient comfort" },
+  { src: aboutImage4, alt: "Close-up of dental equipment controls", title: "Attention to detail" },
+  { src: aboutImage6, alt: "Wooden surgery entrance door inside 518 Dental", title: "Our clinical rooms" },
 ];
 
 export default function About() {
@@ -110,62 +95,89 @@ export default function About() {
         </div>
       </section>
 
-      {/* About Text */}
+      {/* Welcome: an editorial split with a unique image */ }
       <AnimatedSection>
-        <section className="py-20 bg-card">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <div className="prose prose-lg mx-auto space-y-5 text-muted-foreground leading-relaxed">
-              <p>
-                518 Dental is a well-established dental practice situated at
-                518A Bury Road, Rochdale. We are a husband and wife led
-                practice, run by principal dentists Dr Lawiza Kiani and Dr
-                Sajid Malik.
-              </p>
-              <p>
-                We are passionate about providing high quality dental care in a
-                caring, relaxed environment. We offer both NHS and private
-                dental treatments, ensuring comprehensive care options are
-                available for all our patients.
-              </p>
-              <p>
-                Our team is committed to continuing professional education,
-                regularly attending courses and training to stay at the
-                forefront of modern dentistry. Whether you need a routine
-                check-up, cosmetic treatment, or specialist dental care, we are
-                here to help.
-              </p>
-              <p>
-                We believe that visiting the dentist should be a positive
-                experience, and we work hard to ensure every patient feels
-                welcome, comfortable and well cared for from the moment they
-                walk through our door.
-              </p>
+        <section className="bg-card py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+              <div>
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-secondary">Welcome to 518 Dental</p>
+                <h2 className="mb-6 font-serif text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+                  Family-focused care in a welcoming setting
+                </h2>
+                <div className="space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                  <p>
+                    518 Dental is a well-established dental practice situated at
+                    518A Bury Road, Rochdale. We are a husband and wife led
+                    practice, run by principal dentists Dr Lawiza Kiani and Dr Sajid Malik.
+                  </p>
+                  <p>
+                    We are passionate about providing high quality dental care in a
+                    caring, relaxed environment. We offer both NHS and private
+                    dental treatments, ensuring comprehensive care options are
+                    available for all our patients.
+                  </p>
+                  <p>
+                    Our team is committed to continuing professional education,
+                    regularly attending courses and training to stay at the
+                    forefront of modern dentistry. Whether you need a routine
+                    check-up, cosmetic treatment, or specialist dental care, we are
+                    here to help.
+                  </p>
+                  <p>
+                    We believe that visiting the dentist should be a positive
+                    experience, and we work hard to ensure every patient feels
+                    welcome, comfortable and well cared for from the moment they
+                    walk through our door.
+                  </p>
+                </div>
+              </div>
+              <figure className="overflow-hidden rounded-2xl border border-secondary/20 bg-warm-white shadow-lg">
+                <img
+                  src={receptionImage}
+                  alt="The illuminated main reception desk at 518 Dental"
+                  className="aspect-[4/3] w-full object-cover object-center lg:aspect-[5/4]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="flex items-center gap-3 px-5 py-4 text-sm font-medium text-foreground">
+                  <span className="h-1.5 w-8 rounded-full bg-secondary" aria-hidden="true" />
+                  A warm welcome, from the moment you arrive
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
       </AnimatedSection>
 
-      {/* Gallery */}
+      {/* Six different scenes, with no repeated image */ }
       <AnimatedSection>
-        <section className="py-20 bg-warm-white">
+        <section className="bg-warm-white py-16 md:py-20">
           <div className="container mx-auto px-4">
             <SectionHeading
               title="Inside Our Practice"
-              subtitle="A look around 518 Dental"
+              subtitle="Explore our welcoming spaces, modern surgeries and thoughtful details"
             />
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {aboutGallery.map((image) => (
                 <Card
                   key={image.src}
-                  className={`group overflow-hidden border-none shadow-md ${image.className}`}
+                  className="group overflow-hidden rounded-2xl border border-secondary/10 bg-card shadow-sm transition-shadow duration-300 hover:shadow-lg"
                 >
-                  <CardContent className="h-full p-0">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="aspect-[4/3] h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 lg:aspect-[5/4]"
-                      loading="lazy"
-                    />
+                  <CardContent className="p-0">
+                    <div className="overflow-hidden">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="aspect-[4/3] w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="flex items-center gap-3 px-5 py-4">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden="true" />
+                      <p className="font-serif text-base font-semibold text-foreground">{image.title}</p>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
