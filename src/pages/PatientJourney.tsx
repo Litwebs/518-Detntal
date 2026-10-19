@@ -115,6 +115,12 @@ export default function PatientJourney() {
               ))}
             </div>
           </div>
+          <div className="mt-12 text-center">
+            <p className="mb-4 text-muted-foreground">Ready to arrange an appointment or have a question about your care?</p>
+            <Link to="/contact" className="inline-flex items-center justify-center rounded-lg bg-secondary px-6 py-3 font-semibold text-secondary-foreground transition-colors hover:bg-secondary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">
+              Contact Us
+            </Link>
+          </div>
         </div>
       </section>
     </Layout>

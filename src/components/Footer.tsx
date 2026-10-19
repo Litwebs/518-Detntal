@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const logo = `${import.meta.env.BASE_URL}518.jpg`;
@@ -14,6 +14,14 @@ const hours = [
 ];
 
 export default function Footer() {
+  const { pathname } = useLocation();
+
+  const handleFooterLinkClick = (target: string) => {
+    if (pathname === target) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-16">
@@ -47,6 +55,7 @@ export default function Footer() {
                 <Link
                   key={link.to}
                   to={link.to}
+                  onClick={() => handleFooterLinkClick(link.to)}
                   className="text-sm text-primary-foreground/70 hover:text-secondary transition-colors"
                 >
                   {link.label}
