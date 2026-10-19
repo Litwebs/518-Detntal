@@ -1,6 +1,10 @@
 import lawizaImage from "@/assets/doctor-2.png";
 import sajidImage from "@/assets/doctor-1.png";
-import hassanImage from "@/assets/doctor-3.png";
+import hassanImage from "@/assets/team/hassan-adnan.jpg";
+import zaraImage from "@/assets/team/zara-ashraf.jpg";
+import shahzaibImage from "@/assets/team/shahzaib-siddiqui.jpg";
+import bilalImage from "@/assets/team/bilal-afzal.jpg";
+import talhaImage from "@/assets/team/talha-dawood.jpg";
 
 export type TeamMember = {
   name: string;
@@ -33,6 +37,7 @@ export const team: TeamMember[] = [
   {
     name: "Dr Zara Ashraf",
     role: "Dentist",
+    image: zaraImage,
     gdc: "270720",
     short:
       "Zara graduated from the University of Liverpool in 2017 and has advanced training in implant, restorative and aesthetic dentistry.",
@@ -50,6 +55,7 @@ export const team: TeamMember[] = [
   {
     name: "Dr Shahzaib Siddiqui",
     role: "Dentist",
+    image: shahzaibImage,
     gdc: "318897",
     short:
       "Shahzaib graduated with honours from the University of Manchester and has a strong interest in endodontics and preserving teeth.",
@@ -58,6 +64,7 @@ export const team: TeamMember[] = [
   {
     name: "Dr Bilal Afzal",
     role: "Dentist",
+    image: bilalImage,
     gdc: "305693",
     short:
       "Bilal graduated from the Medical University of Plovdiv in 2022 and has a keen interest in oral surgery and conscious sedation.",
@@ -74,6 +81,7 @@ export const team: TeamMember[] = [
   {
     name: "Mr Talha Dawood",
     role: "Clinical Dental Technician",
+    image: talhaImage,
     gdc: "309886",
     short:
       "Talha is a qualified Clinical Dental Technician who creates comfortable, natural-looking dentures tailored to each patient’s needs.",
