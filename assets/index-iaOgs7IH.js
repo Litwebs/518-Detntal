@@ -243,7 +243,7 @@ Outside of dentistry, Dr Afzal enjoys hiking, playing padel, travelling, and spe
 
 Faiza’s priority is ensuring every patient has a positive and relaxed experience from the moment they walk through the door. Faiza enjoys treating patients of all ages, with a particular interest in helping those who feel anxious about dental treatment to try and make every appointment as comfortable and stress-free as possible.
 
-When she’s not at work you'll usually find her caring for her houseplants, planning her next travel adventure or enjoying quality time with family.`},{name:"Mr Talha Dawood",role:"Clinical Dental Technician",short:"Talha is a qualified Clinical Dental Technician who creates comfortable, natural-looking dentures tailored to each patient’s needs.",full:`Talha is a fully qualified Clinical Dental Technician with a passion for creating comfortable, natural-looking dentures tailored to each patient’s needs.
+When she’s not at work you'll usually find her caring for her houseplants, planning her next travel adventure or enjoying quality time with family.`},{name:"Mr Talha Dawood",role:"Clinical Dental Technician",gdc:"309886",short:"Talha is a qualified Clinical Dental Technician who creates comfortable, natural-looking dentures tailored to each patient’s needs.",full:`Talha is a fully qualified Clinical Dental Technician with a passion for creating comfortable, natural-looking dentures tailored to each patient’s needs.
 
 Known for his friendly and reassuring approach, he takes the time to understand patients’ concerns and helps even the most nervous feel at ease.
 
