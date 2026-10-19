@@ -477,7 +477,7 @@ export default function Index() {
               asChild
               size="lg"
               variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-lg"
+              className="bg-secondary text-secondary-foreground border-secondary hover:bg-secondary/90 hover:text-secondary-foreground rounded-lg"
             >
               <Link to="/contact">
                 <Calendar className="mr-2 h-4 w-4" /> Enquire Online
