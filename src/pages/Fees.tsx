@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -17,82 +16,30 @@ interface FeeCategory { title: string; items: FeeItem[] }
 
 const feeCategories: FeeCategory[] = [
   {
-    title: "Independent Fees",
+    title: "NHS",
     items: [
-      { name: "New Patient Examination", price: "£50.00" },
-      { name: "Routine Examination", price: "£30.00" },
-      { name: "Emergency Examination", price: "£30.00" },
-      { name: "Small X-ray", price: "£10.00" },
-      { name: "Large X-ray (OPG)", price: "£50.00" },
-      { name: "Scale & Polish (per session)", price: "From £55.00" },
-      { name: "Composite Filling (per surface)", price: "From £60.00" },
-      { name: "Extraction", price: "From £80.00" },
-      { name: "Surgical Extraction", price: "From £150.00" },
+      { name: "Band 1", price: "£27.90" },
+      { name: "Band 2", price: "£76.60" },
+      { name: "Band 3", price: "£332.10" },
     ],
   },
   {
-    title: "Private Cosmetic Dentistry",
+    title: "Private",
     items: [
-      { name: "Porcelain Crown", price: "From £450.00" },
-      { name: "Porcelain Bridge (per unit)", price: "From £450.00" },
-      { name: "Porcelain Veneer", price: "From £450.00" },
-    ],
-  },
-  {
-    title: "Invisalign",
-    items: [
-      { name: "Invisalign Comprehensive", price: "From £3,500.00" },
-      { name: "Invisalign Lite", price: "From £2,500.00" },
-      { name: "Invisalign i7", price: "From £1,500.00" },
-    ],
-  },
-  {
-    title: "Lumi Aligners",
-    items: [
-      { name: "Lumi Aligners", price: "From £1,200.00" },
-    ],
-  },
-  {
-    title: "Avant Garde Composite Bonding",
-    items: [
-      { name: "Composite Bonding (per tooth)", price: "From £250.00" },
-    ],
-  },
-  {
-    title: "Root Canal",
-    items: [
-      { name: "Anterior Root Canal", price: "From £250.00" },
-      { name: "Premolar Root Canal", price: "From £350.00" },
-      { name: "Molar Root Canal", price: "From £450.00" },
-    ],
-  },
-  {
-    title: "Dentures",
-    items: [
-      { name: "Acrylic Denture (complete)", price: "From £500.00" },
-      { name: "Acrylic Denture (partial)", price: "From £300.00" },
-      { name: "Valplast Flexible Denture", price: "From £500.00" },
-    ],
-  },
-  {
-    title: "Tooth Whitening",
-    items: [
-      { name: "Boutique Home Whitening", price: "£250.00" },
-      { name: "Enlighten Whitening", price: "From £395.00" },
-    ],
-  },
-  {
-    title: "Bite Guards",
-    items: [
-      { name: "Bite Guard / Night Guard", price: "From £150.00" },
-    ],
-  },
-  {
-    title: "NHS Bands (England)",
-    items: [
-      { name: "Band 1 – Routine exams, X-rays, preventative advice, and clinical scale and polish.", price: "£27.90" },
-      { name: "Band 2 – All Band 1 care plus fillings, extractions, and root canals.", price: "£76.60" },
-      { name: "Band 3 – All Band 1 and 2 care plus complex lab work like crowns, dentures, and bridges.", price: "£332.10" },
+      { name: "Emergency appointment", price: "£50" },
+      { name: "Examination, x-rays and basic scale", price: "£50" },
+      { name: "Air polish", price: "£90" },
+      { name: "Whitening", price: "£450" },
+      { name: "Fillings", price: "From £110" },
+      { name: "Extraction", price: "From £150" },
+      { name: "Root canal treatment", price: "Subject to consultation" },
+      { name: "Dentures", price: "Subject to consultation" },
+      { name: "Zirconia Crown/Bridge per unit/Veneers", price: "£720" },
+      { name: "Aligners consult and scan", price: "£150" },
+      { name: "Invisalign", price: "From £3200" },
+      { name: "Lumi aligners", price: "From £2500" },
+      { name: "Composite bonding", price: "From £400 per unit" },
+      { name: "Implants", price: "Subject to consultation" },
     ],
   },
 ];
@@ -102,7 +49,7 @@ export default function Fees() {
     <Layout>
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Our Fees</h1>
+          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">518 DENTAL PRICE LIST</h1>
           <div className="mx-auto h-1 w-16 rounded-full bg-secondary mb-6" />
           <p className="max-w-2xl mx-auto text-primary-foreground/70 text-lg">
             Transparent pricing for all our treatments.
@@ -121,9 +68,9 @@ export default function Fees() {
                 <CardContent className="p-0">
                   <div className="divide-y divide-border">
                     {cat.items.map((item, i) => (
-                      <div key={i} className="flex justify-between items-center px-6 py-3 hover:bg-muted/50 transition-colors">
+                      <div key={i} className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center sm:gap-4 px-6 py-3 hover:bg-muted/50 transition-colors">
                         <span className="text-sm">{item.name}</span>
-                        <span className="text-sm font-semibold text-secondary whitespace-nowrap ml-4">{item.price}</span>
+                        <span className="text-sm font-semibold text-secondary shrink-0 sm:text-right">{item.price}</span>
                       </div>
                     ))}
                   </div>
