@@ -89,9 +89,11 @@ export default function MeetTheTeam() {
                       {member.name}
                     </h3>
                     <p className="text-sm text-secondary">{member.role}</p>
-                    <p className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                      {member.gdc ? `GDC No ${member.gdc}` : "Dental Surgeon"}
-                    </p>
+                    {member.gdc && (
+                      <p className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                        GDC No {member.gdc}
+                      </p>
+                    )}
                     <p className="text-sm text-muted-foreground mb-6">
                       {member.short}
                     </p>
