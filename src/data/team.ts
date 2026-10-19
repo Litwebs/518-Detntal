@@ -74,6 +74,7 @@ export const team: TeamMember[] = [
   {
     name: "Mr Talha Dawood",
     role: "Clinical Dental Technician",
+    gdc: "309886",
     short:
       "Talha is a qualified Clinical Dental Technician who creates comfortable, natural-looking dentures tailored to each patient’s needs.",
     full: "Talha is a fully qualified Clinical Dental Technician with a passion for creating comfortable, natural-looking dentures tailored to each patient’s needs.\n\nKnown for his friendly and reassuring approach, he takes the time to understand patients’ concerns and helps even the most nervous feel at ease.\n\nHolding a Bachelor’s degree in Clinical Dental Technology, Talha is one of fewer than 450 registered Clinical Dental Technicians in the UK. He has undertaken additional training in the BPS denture workflow and implant-retained dentures.\n\nWhat sets Talha apart is that he personally designs, manufactures and fits every denture he provides. By combining his clinical and technical expertise, he oversees the entire process, from initial consultation to final fitting, ensuring a personalised approach focused on fit, function, comfort and natural aesthetics.\n\nTalha is passionate about helping patients rediscover the confidence to eat, speak and smile comfortably.\n\nOutside of work, he enjoys football.",
