@@ -1,3 +1,4 @@
+import PracticeGallery from "@/components/PracticeGallery";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,12 +11,6 @@ import {
   Stethoscope,
   Smile,
 } from "lucide-react";
-import aboutImage1 from "@/assets/About-1.JPG?url";
-import aboutImage2 from "@/assets/About-2.JPG?url";
-import aboutImage3 from "@/assets/About-3.JPG?url";
-import aboutImage4 from "@/assets/About-4.JPG?url";
-import aboutImage5 from "@/assets/About-5.JPG?url";
-import aboutImage6 from "@/assets/About-6.JPG?url";
 
 function AnimatedSection({
   children,
@@ -68,30 +63,6 @@ const values = [
   },
 ];
 
-const aboutGallery = [
-  {
-    src: aboutImage1,
-    alt: "518 Dental reception seating area",
-    className: "lg:col-span-2",
-  },
-  {
-    src: aboutImage2,
-    alt: "518 Dental treatment room interior",
-    className: "",
-  },
-  {
-    src: aboutImage3,
-    alt: "518 Dental welcoming practice space",
-    className: "",
-  },
-  { src: aboutImage4, alt: "518 Dental modern clinic details", className: "" },
-  { src: aboutImage5, alt: "518 Dental patient area and décor", className: "" },
-  {
-    src: aboutImage6,
-    alt: "518 Dental interior practice view",
-    className: "lg:col-span-2",
-  },
-];
 
 export default function About() {
   return (
@@ -145,34 +116,7 @@ export default function About() {
         </section>
       </AnimatedSection>
 
-      {/* Gallery */}
-      <AnimatedSection>
-        <section className="py-20 bg-warm-white">
-          <div className="container mx-auto px-4">
-            <SectionHeading
-              title="Inside Our Practice"
-              subtitle="A look around 518 Dental"
-            />
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {aboutGallery.map((image) => (
-                <Card
-                  key={image.src}
-                  className={`group overflow-hidden border-none shadow-md ${image.className}`}
-                >
-                  <CardContent className="h-full p-0">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="aspect-[4/3] h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 lg:aspect-[5/4]"
-                      loading="lazy"
-                    />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+      <PracticeGallery />
 
       {/* Values */}
       <AnimatedSection>
@@ -206,3 +150,4 @@ export default function About() {
     </Layout>
   );
 }
+
