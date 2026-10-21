@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Expand } from "lucide-react";
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Expand, X } from "lucide-react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { practicePhotos } from "@/data/practicePhotos";
 import "./PracticeGallery.css";
 
@@ -11,6 +11,10 @@ export default function PracticeGallery() {
     index === null ? null : (index + direction + practicePhotos.length) % practicePhotos.length,
   );
   const featured = practicePhotos[0];
+  const thumbnailRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  useEffect(() => {
+    if (activeIndex !== null) thumbnailRefs.current[activeIndex]?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [activeIndex]);
 
   return (
     <section className="practice-gallery" aria-labelledby="practice-gallery-heading">
@@ -52,23 +56,45 @@ export default function PracticeGallery() {
         <p className="practice-gallery__closing">Thoughtfully designed. Personally welcoming. <span>518 Dental, Rochdale.</span></p>
       </div>
 
-      <Dialog open={active !== null} onOpenChange={(open) => { if (!open) setActiveIndex(null); }}>
-        <DialogContent className="practice-gallery__viewer" onKeyDown={(event) => {
-          if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); }
-          if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
-        }}>
-          <DialogTitle className="sr-only">Inside 518 Dental</DialogTitle>
-          <DialogDescription className="sr-only">Use the previous and next buttons or arrow keys to browse all photographs. Press Escape to close.</DialogDescription>
-          {active && <>
-            <img className="practice-gallery__viewer-image" src={active.src} alt={active.alt} width={active.width} height={active.height} />
-            <div className="practice-gallery__viewer-controls">
-              <button onClick={() => move(-1)} aria-label="Previous photograph"><ArrowLeft size={20} /></button>
-              <div aria-live="polite" aria-atomic="true"><p>{active.caption}</p><span>{(activeIndex ?? 0) + 1} / {practicePhotos.length}</span></div>
-              <button onClick={() => move(1)} aria-label="Next photograph"><ArrowRight size={20} /></button>
-            </div>
-          </>}
-        </DialogContent>
-      </Dialog>
+      <Dialog.Root open={active !== null} onOpenChange={(open) => { if (!open) setActiveIndex(null); }}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="practice-lightbox-backdrop" />
+          <Dialog.Content className="practice-lightbox" onKeyDown={(event) => {
+            if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); }
+            if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
+          }}>
+            <Dialog.Description className="sr-only">Explore our practice photographs. Choose a thumbnail or use the arrow keys. Press Escape to close.</Dialog.Description>
+            {active && <>
+              <header className="practice-lightbox__header">
+                <div className="practice-lightbox__heading">
+                  <p className="practice-lightbox__eyebrow">518 Dental <span /> The practice collection</p>
+                  <Dialog.Title className="practice-lightbox__title">{active.caption}</Dialog.Title>
+                </div>
+                <div className="practice-lightbox__actions">
+                  <p className="practice-lightbox__counter" aria-live="polite" aria-atomic="true"><strong>{String((activeIndex ?? 0) + 1).padStart(2, "0")}</strong><span>/ {practicePhotos.length}</span></p>
+                  <Dialog.Close className="practice-lightbox__close" aria-label="Close gallery"><span>Close</span><X size={18} aria-hidden="true" /></Dialog.Close>
+                </div>
+              </header>
+              <div className="practice-lightbox__stage">
+                <img key={active.src} className="practice-lightbox__image" src={active.src} alt={active.alt} width={active.width} height={active.height} />
+                <button className="practice-lightbox__arrow practice-lightbox__arrow--previous" onClick={() => move(-1)} aria-label="Previous photograph"><ArrowLeft size={22} aria-hidden="true" /></button>
+                <button className="practice-lightbox__arrow practice-lightbox__arrow--next" onClick={() => move(1)} aria-label="Next photograph"><ArrowRight size={22} aria-hidden="true" /></button>
+              </div>
+              <footer className="practice-lightbox__footer">
+                <div className="practice-lightbox__collection-label"><span>A little look around</span><span>Choose a view below</span></div>
+                <div className="practice-lightbox__thumbnails" aria-label="Choose a practice photograph">
+                  {practicePhotos.map((photo, index) => (
+                    <button key={photo.src} ref={(node) => { thumbnailRefs.current[index] = node; }} className="practice-lightbox__thumbnail" aria-label={`Show photograph ${index + 1}: ${photo.caption}`} aria-current={activeIndex === index ? "true" : undefined} onClick={() => setActiveIndex(index)}>
+                      <img src={photo.src} alt="" width={photo.width} height={photo.height} loading="lazy" />
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                    </button>
+                  ))}
+                </div>
+              </footer>
+            </>}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </section>
   );
 }
