@@ -1,5 +1,6 @@
 import lawizaImage from "@/assets/team/lawiza-kiani-reference-aligned.jpg";
-import sajidImage from "@/assets/doctor-1.png";
+import sajidImage from "@/assets/team/sajid-malik.jpg";
+import faizaImage from "@/assets/team/faiza-anjum.jpg";
 import hassanImage from "@/assets/team/hassan-adnan-reference-aligned.jpg";
 import zaraImage from "@/assets/team/zara-ashraf.jpg";
 import shahzaibImage from "@/assets/team/shahzaib-siddiqui-centered.jpg";
@@ -31,6 +32,7 @@ export const team: TeamMember[] = [
     role: "Principal Dentist",
     gdc: "176706",
     image: sajidImage,
+    portraitClass: "!object-[50%_25%]",
     short:
       "Sajid qualified from the University of Liverpool in 2009 and has advanced training in aligners, restorative and cosmetic dentistry.",
     full: "Sajid qualified from the University of Liverpool in 2009. Since then, he has continued to develop through advanced training in areas including clear aligners, restorative dentistry and cosmetic treatments. Sajid is currently studying for an MSc in Dental Implantology.",
@@ -75,6 +77,8 @@ export const team: TeamMember[] = [
     name: "Dr Faiza Anjum",
     role: "Dentist",
     gdc: "296160",
+    image: faizaImage,
+    portraitClass: "!object-[50%_20%]",
     short:
       "Faiza qualified from the University of Manchester in 2021 and is passionate about making every visit relaxed and positive.",
     full: "Dr Faiza Anjum qualified in 2021 from The University of Manchester.\n\nFaiza’s priority is ensuring every patient has a positive and relaxed experience from the moment they walk through the door. Faiza enjoys treating patients of all ages, with a particular interest in helping those who feel anxious about dental treatment to try and make every appointment as comfortable and stress-free as possible.\n\nWhen she’s not at work you'll usually find her caring for her houseplants, planning her next travel adventure or enjoying quality time with family.",
