@@ -27,7 +27,7 @@
 .practice-gallery button:focus-visible, .practice-gallery a:focus-visible { outline: 3px solid #b08b4f; outline-offset: 4px; }
 .practice-gallery__closing { text-align: center; font-size: .8rem; color: #6b6c62; padding-top: 2rem; line-height: 1.8; }
 .practice-gallery__closing span { color: #78623e; }
-.practice-gallery__viewer { width: min(94vw,70rem); max-width: 70rem; max-height: 94dvh; gap: 0; padding: 2.75rem 1rem 1rem; border: 1px solid #ffffff25; border-radius: 1rem; background: #171d1b; color: #fff; }
+.practice-gallery__viewer[role="dialog"] { width: min(94vw,70rem); max-width: 70rem; max-height: 94dvh; gap: 0; padding: 2.75rem 1rem 1rem; border: 1px solid #ffffff25; border-radius: 1rem; background: #171d1b; color: #fff; }
 .practice-gallery__viewer-image { display: block; width: 100%; height: min(70dvh,850px); object-fit: contain; }
 .practice-gallery__viewer-controls { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem .5rem 0; }
 .practice-gallery__viewer-controls button { display: grid; place-items: center; flex-shrink: 0; width: 2.75rem; height: 2.75rem; border: 1px solid #ffffff50; border-radius: 50%; }
