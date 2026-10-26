@@ -1,3 +1,4 @@
+import { openingHours as hours, lunchClosureNotice } from "@/data/openingHours";
 import { Link } from "react-router-dom";
 import {
   Phone,
@@ -68,8 +69,7 @@ const treatments = [
     icon: Sparkles,
     desc: "Cosmetic smile enhancement",
   },
-  { name: "Teeth Whitening", icon: Smile, desc: "Professional brightening" },
-  { name: "Invisalign", icon: Smile, desc: "Clear aligner orthodontics" },
+  { name: "Clear Aligners", icon: Smile, desc: "Clear aligner orthodontics" },
   { name: "Implants", icon: Syringe, desc: "Permanent tooth replacement" },
 ];
 
@@ -96,15 +96,6 @@ const whyChoose = [
   },
 ];
 
-const hours = [
-  { day: "Monday", time: "9:00am – 5:30pm" },
-  { day: "Tuesday", time: "9:00am – 5:30pm" },
-  { day: "Wednesday", time: "9:00am – 8:00pm" },
-  { day: "Thursday", time: "9:00am – 5:30pm" },
-  { day: "Friday", time: "8:00am – 12:30pm" },
-  { day: "Saturday", time: "Closed" },
-  { day: "Sunday", time: "Closed" },
-];
 
 const teamPreview = team.slice(0, 4);
 
@@ -389,15 +380,17 @@ export default function Index() {
                       {hours.map((h) => (
                         <div
                           key={h.day}
-                          className="flex justify-between text-sm py-1 border-b border-border last:border-0"
+                          className="flex items-start justify-between gap-3 text-sm py-1 border-b border-border last:border-0"
                         >
-                          <span className="font-medium">{h.day}</span>
-                          <span className="text-muted-foreground">
-                            {h.time}
-                          </span>
+                          <span className="shrink-0 font-medium">{h.day}</span>
+                          <div className="text-right text-muted-foreground">
+                            <span className="block">{h.time}</span>
+                            {h.lunch && <span className="mt-0.5 block text-xs">Lunch: {h.lunch}</span>}
+                          </div>
                         </div>
                       ))}
                     </div>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{lunchClosureNotice}</p>
                     <div className="mt-6 space-y-2 text-sm">
                       <a
                         href="tel:01706527127"

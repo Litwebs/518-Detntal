@@ -1,3 +1,4 @@
+import { openingHours as hours, lunchClosureNotice } from "@/data/openingHours";
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
@@ -34,15 +35,6 @@ function AnimatedSection({
   );
 }
 
-const hours = [
-  { day: "Monday", time: "9:00am – 5:30pm" },
-  { day: "Tuesday", time: "9:00am – 5:30pm" },
-  { day: "Wednesday", time: "9:00am – 8:00pm" },
-  { day: "Thursday", time: "9:00am – 5:30pm" },
-  { day: "Friday", time: "8:00am – 12:30pm" },
-  { day: "Saturday", time: "Closed" },
-  { day: "Sunday", time: "Closed" },
-];
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -108,15 +100,17 @@ export default function Contact() {
                       {hours.map((h) => (
                         <div
                           key={h.day}
-                          className="flex justify-between text-sm py-1 border-b border-border last:border-0"
+                          className="flex items-start justify-between gap-3 text-sm py-1 border-b border-border last:border-0"
                         >
-                          <span className="font-medium">{h.day}</span>
-                          <span className="text-muted-foreground">
-                            {h.time}
-                          </span>
+                          <span className="shrink-0 font-medium">{h.day}</span>
+                          <div className="text-right text-muted-foreground">
+                            <span className="block">{h.time}</span>
+                            {h.lunch && <span className="mt-0.5 block text-xs">Lunch: {h.lunch}</span>}
+                          </div>
                         </div>
                       ))}
                     </div>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{lunchClosureNotice}</p>
                   </CardContent>
                 </Card>
 
@@ -227,8 +221,7 @@ export default function Contact() {
                           <option>Dentures</option>
                           <option>Root Canal</option>
                           <option>Composite Bonding & Veneers</option>
-                          <option>Teeth Whitening</option>
-                          <option>Invisalign</option>
+                          <option>Clear Aligners</option>
                           <option>Implants</option>
                           <option>Other</option>
                         </select>

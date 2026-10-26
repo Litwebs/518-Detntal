@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
@@ -19,11 +21,11 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 const treatments = [
   {
     name: "Examination",
-    desc: "A thorough examination of your teeth, gums and mouth. We use digital x-rays to identify any problems early. Our examination also includes an oral cancer screening. We recommend attending for a dental examination at least once every 12 months.",
+    desc: "A thorough examination of your teeth, gums and mouth. We use digital x-rays to identify any problems early. Our examination also includes an oral cancer screening. We recommend attending for regular dental examinations.",
   },
   {
     name: "Hygiene",
-    desc: "Professional cleaning to remove plaque and tartar build-up that cannot be removed by brushing alone. Our hygienist will provide tailored advice on maintaining good oral hygiene at home, including brushing techniques, interdental cleaning and diet advice.",
+    desc: "Professional cleaning to remove plaque and tartar build-up that cannot be removed by brushing alone. We will provide tailored advice on maintaining good oral hygiene at home, including brushing techniques, interdental cleaning and diet advice.",
   },
   {
     name: "Composite Fillings",
@@ -35,23 +37,19 @@ const treatments = [
   },
   {
     name: "Dentures",
-    desc: "Removable replacements for missing teeth. We offer both full and partial dentures, including Valplast flexible dentures for improved comfort and aesthetics. Our dentures are custom-made to fit precisely and look natural.",
+    desc: "Removable replacements for missing teeth. We offer both full and partial dentures. Our dentures are custom-made to fit precisely and look natural.",
   },
   {
     name: "Root Canal Treatment",
-    desc: "Root canal treatment is needed when the nerve inside your tooth becomes infected. The procedure involves removing the infected tissue, cleaning and shaping the root canals, then sealing them to prevent further infection. This treatment can save a tooth that might otherwise need to be extracted.",
+    desc: "The procedure involves removing the infected tissue, cleaning and shaping the root canals, then sealing them to prevent further infection. This treatment can save a tooth that might otherwise need to be extracted.",
   },
   {
     name: "Composite Bonding & Veneers",
     desc: "Composite bonding involves applying tooth-coloured resin to reshape, repair or improve the appearance of your teeth. Veneers are thin shells that cover the front surface of teeth to improve their colour, shape or alignment. Both treatments can dramatically transform your smile.",
   },
   {
-    name: "Teeth Whitening",
-    desc: "Professional teeth whitening to brighten and enhance your smile. We offer both in-practice and home whitening options using Boutique Whitening. Our whitening treatments are safe, effective and can lighten your teeth by several shades.",
-  },
-  {
-    name: "Invisalign",
-    desc: "Invisalign uses a series of custom-made, virtually invisible clear aligners to gradually straighten your teeth. The aligners are removable, comfortable and virtually undetectable. Invisalign can treat a wide range of orthodontic issues including crowding, spacing and bite problems.",
+    name: "Clear Aligners",
+    desc: "These are a series of custom-made, clear aligners that gradually straighten your teeth. The aligners are removable and designed to fit comfortably.",
   },
   {
     name: "Implants",
@@ -59,7 +57,18 @@ const treatments = [
   },
 ];
 
+const treatmentId = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 export default function Treatments() {
+  const { hash } = useLocation();
+  const [openTreatment, setOpenTreatment] = useState("");
+  useEffect(() => {
+    const selected = treatments.find((entry) => treatmentId(entry.name) === hash.slice(1));
+    if (!selected) return;
+    setOpenTreatment(selected.name);
+    const frame = requestAnimationFrame(() => document.getElementById(treatmentId(selected.name))?.scrollIntoView({ block: "start" }));
+    return () => cancelAnimationFrame(frame);
+  }, [hash]);
   return (
     <Layout>
       <section className="bg-primary text-primary-foreground py-20">
@@ -77,9 +86,9 @@ export default function Treatments() {
           <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
             <div>
               <AnimatedSection>
-                <Accordion type="single" collapsible className="space-y-4">
+                <Accordion type="single" collapsible value={openTreatment} onValueChange={setOpenTreatment} className="space-y-4">
                   {treatments.map((t) => (
-                    <AccordionItem key={t.name} value={t.name} className="border border-border rounded-lg px-6 overflow-hidden">
+                    <AccordionItem key={t.name} id={treatmentId(t.name)} value={t.name} className="scroll-mt-28 border border-border rounded-lg px-6 overflow-hidden">
                       <AccordionTrigger className="font-serif text-lg font-semibold hover:no-underline hover:text-secondary">
                         {t.name}
                       </AccordionTrigger>

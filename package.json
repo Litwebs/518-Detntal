@@ -7,13 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
-    "postbuild": "cp dist/index.html dist/404.html || copy dist\\index.html dist\\404.html",
-    "deploy": "gh-pages -d dist",
+    "postbuild": "node scripts/build-static-pages.mjs",
+    "deploy": "gh-pages -d dist --dotfiles",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:routes": "node --test scripts/build-static-pages.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

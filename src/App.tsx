@@ -1,5 +1,6 @@
+import { pages, legacyRedirects, siteOrigin } from "@/data/siteRoutes.js";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -25,6 +26,37 @@ function ScrollToTop() {
   return null;
 }
 
+function PageMetadata() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const page = pages.find((entry) => entry.path.replace(/\/$/, "") === pathname.replace(/\/$/, ""));
+    if (!page) return;
+    document.title = page.title;
+    const canonical = document.querySelector('link[rel="canonical"]') ?? document.head.appendChild(document.createElement("link"));
+    canonical.setAttribute("rel", "canonical");
+    canonical.setAttribute("href", siteOrigin + page.path);
+    for (const [attribute, name, value] of [
+      ["name", "description", page.description],
+      ["property", "og:title", page.title],
+      ["property", "og:description", page.description],
+      ["property", "og:url", siteOrigin + page.path],
+      ["name", "twitter:title", page.title],
+      ["name", "twitter:description", page.description],
+    ]) {
+      const meta = document.querySelector(`meta[${attribute}="${name}"]`) ?? document.head.appendChild(document.createElement("meta"));
+      meta.setAttribute(attribute, name);
+      meta.setAttribute("content", value);
+    }
+  }, [pathname]);
+  return null;
+}
+
+function LegacyRedirect({ target }: { target: string }) {
+  const { search, hash } = useLocation();
+  const [pathname, treatment] = target.split("#");
+  return <Navigate replace to={{ pathname, search, hash: treatment ? `#${treatment}` : hash }} />;
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -32,6 +64,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
+        <PageMetadata />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -41,6 +74,9 @@ const App = () => (
           <Route path="/fees" element={<Fees />} />
           <Route path="/dental-referral" element={<DentalReferral />} />
           <Route path="/contact" element={<Contact />} />
+          {Object.entries(legacyRedirects).map(([path, target]) => (
+            <Route key={path} path={path} element={<LegacyRedirect target={target} />} />
+          ))}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,17 +1,9 @@
+import { openingHours as hours, lunchClosureNotice } from "@/data/openingHours";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const logo = `${import.meta.env.BASE_URL}518.jpg`;
 
-const hours = [
-  { day: "Monday", time: "9:00am – 5:30pm" },
-  { day: "Tuesday", time: "9:00am – 5:30pm" },
-  { day: "Wednesday", time: "9:00am – 8:00pm" },
-  { day: "Thursday", time: "9:00am – 5:30pm" },
-  { day: "Friday", time: "8:00am – 12:30pm" },
-  { day: "Saturday", time: "Closed" },
-  { day: "Sunday", time: "Closed" },
-];
 
 export default function Footer() {
   const { pathname } = useLocation();
@@ -98,12 +90,16 @@ export default function Footer() {
             </h3>
             <div className="space-y-1.5 text-sm text-primary-foreground/70">
               {hours.map((h) => (
-                <div key={h.day} className="flex justify-between">
-                  <span>{h.day}</span>
-                  <span>{h.time}</span>
+                <div key={h.day} className="flex items-start justify-between gap-3">
+                  <span className="shrink-0">{h.day}</span>
+                  <div className="text-right">
+                    <span className="block">{h.time}</span>
+                    {h.lunch && <span className="mt-0.5 block text-xs text-primary-foreground/60">Lunch: {h.lunch}</span>}
+                  </div>
                 </div>
               ))}
             </div>
+            <p className="mt-3 text-xs leading-relaxed text-primary-foreground/70">{lunchClosureNotice}</p>
           </div>
         </div>
 
