@@ -4,7 +4,6 @@ import faizaImage from "@/assets/team/faiza-anjum.jpg";
 import hassanImage from "@/assets/team/hassan-adnan-reference-aligned.jpg";
 import zaraImage from "@/assets/team/zara-ashraf.jpg";
 import shahzaibImage from "@/assets/team/shahzaib-siddiqui-centered.jpg";
-import bilalImage from "@/assets/team/bilal-afzal.jpg";
 import talhaImage from "@/assets/team/talha-dawood.jpg";
 
 export type TeamMember = {
@@ -63,15 +62,6 @@ export const team: TeamMember[] = [
     short:
       "Shahzaib graduated with honours from the University of Manchester and has a strong interest in endodontics and preserving teeth.",
     full: "Dr. Shahzaib Siddiqui, a graduate from The University of Manchester with Honors in Dental Surgery, who went on to complete his professional training in Leicester. He is a highly dedicated and passionate dental professional committed to providing exceptional patient care, consistently prioritising the individual needs and preferences of his patients throughout their treatment. Dr. Siddiqui is particularly adept at preserving teeth that might otherwise be lost and demonstrates a strong interest in endodontic procedures, having pursued advanced training to refine his expertise in root canal treatment.",
-  },
-  {
-    name: "Dr Bilal Afzal",
-    role: "Dentist",
-    image: bilalImage,
-    gdc: "305693",
-    short:
-      "Bilal graduated from the Medical University of Plovdiv in 2022 and has a keen interest in oral surgery and conscious sedation.",
-    full: "Dr Bilal Afzal graduated from Medical University of Plovdiv in 2022 before obtaining registration with the General Dental Council. Since qualifying, he has worked across a variety of practices, providing a wide range of general dental treatments while continually developing his clinical skills through postgraduate education.\n\nDr Afzal is a caring and dedicated clinician who is passionate about delivering high-quality, patient-centred care. He takes the time to understand each patient’s individual needs, ensuring they feel listened to, well informed and comfortable throughout their treatment journey.\n\nHe enjoys all aspects of general dentistry and finds it particularly rewarding to help patients out of pain and restore their oral health and confidence. He has a keen interest in oral surgery and is currently undertaking a Postgraduate Diploma in Oral Surgery, alongside advanced training in conscious sedation, enabling him to provide safe, comfortable care for anxious patients and those requiring more complex treatment.\n\nCommitted to lifelong learning, Dr Afzal regularly attends postgraduate courses and clinical education programmes to ensure his patients benefit from the latest evidence-based techniques and advances in modern dentistry.\n\nOutside of dentistry, Dr Afzal enjoys hiking, playing padel, travelling, and spending quality time with family and friends. He proudly admits to being a bit of a foodie, always on the lookout for new places to enjoy great cuisine.",
   },
   {
     name: "Dr Faiza Anjum",
