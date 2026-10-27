@@ -48,6 +48,10 @@ const treatments = [
     desc: "Composite bonding involves applying tooth-coloured resin to reshape, repair or improve the appearance of your teeth. Veneers are thin shells that cover the front surface of teeth to improve their colour, shape or alignment. Both treatments can dramatically transform your smile.",
   },
   {
+    name: "Teeth Whitening",
+    desc: "Teeth whitening is a cosmetic dental treatment intended to lighten the natural colour of your teeth. We will assess your teeth and gums, discuss your preferences, and explain the treatment process and aftercare to help you decide whether whitening is suitable for you.",
+  },
+  {
     name: "Clear Aligners",
     desc: "These are a series of custom-made, clear aligners that gradually straighten your teeth. The aligners are removable and designed to fit comfortably.",
   },

@@ -27,7 +27,7 @@ export const legacyRedirects = {
   "/dentures.php": "/treatments/#dentures",
   "/root-canal.php": "/treatments/#root-canal-treatment",
   "/composite-bonding.php": "/treatments/#composite-bonding-veneers",
-  "/teeth-whitening.php": "/treatments/",
+  "/teeth-whitening.php": "/treatments/#teeth-whitening",
   "/invisalign.php": "/treatments/#clear-aligners",
   "/implants.php": "/treatments/#implants",
 };

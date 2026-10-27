@@ -69,6 +69,7 @@ const treatments = [
     icon: Sparkles,
     desc: "Cosmetic smile enhancement",
   },
+  { name: "Teeth Whitening", icon: Smile, desc: "Professional teeth whitening" },
   { name: "Clear Aligners", icon: Smile, desc: "Clear aligner orthodontics" },
   { name: "Implants", icon: Syringe, desc: "Permanent tooth replacement" },
 ];

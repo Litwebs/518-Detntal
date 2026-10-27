@@ -221,6 +221,7 @@ export default function Contact() {
                           <option>Dentures</option>
                           <option>Root Canal</option>
                           <option>Composite Bonding & Veneers</option>
+                          <option>Teeth Whitening</option>
                           <option>Clear Aligners</option>
                           <option>Implants</option>
                           <option>Other</option>
